@@ -5,14 +5,13 @@ def open_website_with_proxy(url, proxy):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')  # Включення headless режиму
     chrome_options.add_argument('--no-sandbox')  # Додаткові налаштування для безпечного запуску у віртуальному середовищі
-    chrome_options.add_argument('executable_path=./chromedriver.exe')  # Вказуємо шлях до виконуваного файлу драйвера
 
     # Завантаження драйвера Chrome без запуску браузера
     driver = webdriver.Chrome(options=chrome_options)
-    
+
     # Отримання веб-сторінки
     driver.get(url)
-    
+
     # Закриваємо драйвер
     driver.quit()
 
