@@ -1,21 +1,17 @@
-from selenium import webdriver
+from playwright.sync_api import sync_playwright
+import time
+def open_website(url):
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
+        page.goto(url)
+        time.sleep(5)
+        # Виконайте тут ваші дії зі сторінкою
+        print("done")
+        browser.close()
 
-def open_website_with_proxy(url, proxy):
-    # Налаштування драйвера Chrome для використання headless режиму
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')  # Включення headless режиму
-    chrome_options.add_argument('--no-sandbox')  # Додаткові налаштування для безпечного запуску у віртуальному середовищі
-
-    # Завантаження драйвера Chrome без запуску браузера
-    driver = webdriver.Chrome(options=chrome_options)
-
-    # Отримання веб-сторінки
-    driver.get(url)
-
-    # Закриваємо драйвер
-    driver.quit()
 
 url = 'https://www.example.com'
-proxy = 'ваш_проксі'
 
-open_website_with_proxy(url, proxy)
+open_website(url)
