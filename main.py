@@ -1,23 +1,24 @@
 from selenium import webdriver
 import time
 def open_website_with_proxy(url, proxy):
-    # Создаем объект ChromeOptions
+    # Налаштування драйвера Chrome для використання headless режиму
     chrome_options = webdriver.ChromeOptions()
-    
-    # Устанавливаем прокси-сервер
-    chrome_options.add_argument(f'--proxy-server=http://{proxy}')
 
-    # Создаем экземпляр веб-драйвера Chrome с настроенными опциями
+    chrome_options.add_argument('executable_path=./chromedriver.exe')  # Вказуємо шлях до виконуваного файлу драйвера
+
+    # Завантаження драйвера Chrome без запуску браузера
     driver = webdriver.Chrome(options=chrome_options)
     
-    # Открываем URL
+    # Отримання веб-сторінки
     driver.get(url)
-    time.sleep(10)
     
-    # Закрываем браузер
+    # Закриваємо драйвер
+    time.sleep(10)
     driver.quit()
+    
 
-url = 'https://2ip.ua/ru/'
-proxy = '45.94.47.66:8110'
+url = 'https://www.example.com'
+proxy = 'ваш_проксі'
+
 
 open_website_with_proxy(url, proxy)
