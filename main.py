@@ -1,17 +1,13 @@
-from playwright.sync_api import sync_playwright
-import time
-def open_website(url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context()
-        page = context.new_page()
-        page.goto(url)
-        time.sleep(5)
-        # Виконайте тут ваші дії зі сторінкою
-        print("done")
-        browser.close()
+from selenium import webdriver
 
+# Путь к драйверу Chrome WebDriver
+chrome_driver_path = "./chromedriver"
 
-url = 'https://www.example.com'
+# Создание экземпляра драйвера Chrome с помощью Chrome WebDriver
+driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
-open_website(url)
+# URL веб-страницы, которую вы хотите открыть
+url = "https://www.example.com"
+
+# Загрузка страницы
+driver.get(url)
