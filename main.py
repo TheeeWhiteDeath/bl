@@ -5,6 +5,9 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
+import requests
+import os
 
 def register_with_proxy():
     # Создаем объект ChromeOptions
@@ -12,9 +15,6 @@ def register_with_proxy():
 
     # Устанавливаем User-Agent заголовок
     options.add_argument("user-agent=Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--headless")
 
     # Устанавливаем язык и регион
     options.add_argument("--lang=en-GB")  # Язык: английский, Регион: Великобритания
@@ -47,49 +47,49 @@ def register_with_proxy():
     driver.switch_to.frame("cp-registration-frame")
 
     first_name_field = driver.find_element(By.ID, 'reg-firstName')
-    text_to_enter = "First"  
+    text_to_enter = "John"  
     first_name_field.send_keys(text_to_enter)
     print('Text entered firstname')
     time.sleep(1)
 
     last_name_field = driver.find_element(By.ID, 'reg-lastName')
-    text_to_enter = "Last" 
+    text_to_enter = "Cutler" 
     last_name_field.send_keys(text_to_enter)
     print('Text entered last name')
     time.sleep(1)
 
     day_field = driver.find_element(By.ID, 'reg-dobDay')
-    text_to_enter = "12" 
+    text_to_enter = "29" 
     day_field.send_keys(text_to_enter)
     print('Text entered day')
     time.sleep(1)
 
     dob_month_field = driver.find_element(By.NAME, 'dobMonth')
-    value_to_enter = "6" 
+    value_to_enter = "05" 
     dob_month_field.send_keys(value_to_enter)
     print('Text entered dobMonth')
     time.sleep(1)
 
     dob_year_field = driver.find_element(By.NAME, 'dobYear')
-    year_to_enter = "1990"  
+    year_to_enter = "1973"  
     dob_year_field.send_keys(year_to_enter)
     print('Text entered dobYear')
     time.sleep(1)
 
     email_field = driver.find_element(By.ID, 'reg-email')
-    text_to_enter = "lastgmail@gmail.com" 
+    text_to_enter = "peter.pipich@gmail.com" 
     email_field.send_keys(text_to_enter)
     print('Text entered into reg-email')
     time.sleep(2)
 
     mobile_field = driver.find_element(By.ID, 'reg-mobile')
-    text_to_enter = "+1234567890"  
+    text_to_enter = "+44 (796) 061-5693"  
     mobile_field.send_keys(text_to_enter)
     print('Text entered into reg-mobile')
     time.sleep(2)
 
     search_field = driver.find_element(By.ID, 'reg-search')
-    text_to_enter = "4 Drayton Gardens London SW10 9SA"
+    text_to_enter = "103 Ritson Street"
     search_field.send_keys(text_to_enter)
     print('Text entered into reg-search')
 
@@ -115,13 +115,84 @@ def register_with_proxy():
 
     time.sleep(5)
 
+
+
+
+    use_field = driver.find_element(By.ID, 'reg-username')
+    text_to_enter = "Boyd40694"
+    use_field.send_keys(text_to_enter)
+    print('Text entered into reg-username')
+
+    time.sleep(5)
+
+
+    pss_field = driver.find_element(By.ID, 'reg-password')
+    text_to_enter = "9vCbi9#M#"
+    pss_field.send_keys(text_to_enter)
+    print('Text entered into reg-password')
+
+    time.sleep(5)
+
+
+    select_element = driver.find_element(By.ID, "reg-challenge")
+
+    # Выбираем опцию "My favourite player" по значению
+    select_element.click()  # Открываем выпадающий список
+    option_to_select = select_element.find_element(By.XPATH, "//option[@value='My favourite player']")
+    option_to_select.click()  # Выбираем опцию
+    time.sleep(2)
+
+
+    answ = driver.find_element(By.ID, 'reg-response')
+    text_to_enter = "Messi"
+    answ.send_keys(text_to_enter)
+    print('Text entered into reg-response')
+
+
+    
+    time.sleep(5)
+
+
+
+   
+    select_element = Select(driver.find_element(By.ID, "reg-depositLimit"))
+
+# Выбираем опцию "£500" по значению
+    select_element.select_by_value("500")
+    time.sleep(5)
+    button = driver.find_element(By.ID, "reg-submit")
+
+# Нажимаем на кнопку
+    button.click()
+
+
+
+
+
+
+
+    time.sleep(5000000)
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    screenshot_file = os.path.join(current_directory, "screenshot.png")
+    driver.save_screenshot(screenshot_file)
     driver.quit()
+    # Отправляем скриншот через Telegram API бота
+    bot_token = '6678247634:AAE2eUY73oZ0UeuZYTy3Gdq6LfOKAAz9bCM'
+    chat_id = '1350650566'
+
+    url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
+    files = {'photo': open(screenshot_file, 'rb')}
+    params = {'chat_id': chat_id}
+    response = requests.post(url, files=files, data=params)
+
+    if response.status_code == 200:
+        print("Скриншот успешно отправлен!")
+    else:
+        print("Ошибка при отправке скриншота:", response.text)
 
 
 
-x = 1
-for i in range(5):
-    register_with_proxy()
 
+register_with_proxy()
 
 
