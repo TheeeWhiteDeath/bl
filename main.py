@@ -35,6 +35,7 @@ def register_with_proxy():
 
     driver.get("https://vegas.williamhill.com/")
     time.sleep(5)
+    print("Opened")
 
     join_button = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test-id="@sitebase/registration-button_hrs-action__registration-button"]')))
 
