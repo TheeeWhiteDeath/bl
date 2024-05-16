@@ -21,7 +21,7 @@ def register_with_proxy():
 
     # Настройка прокси
     proxy = Proxy()
-    proxy_address = "127.0.0.1:40000"
+    proxy_address = "127.0.0.1:40009"
     proxy.proxy_type = ProxyType.MANUAL
     proxy.http_proxy = proxy_address
     proxy.ssl_proxy = proxy_address
