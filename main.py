@@ -1,25 +1,13 @@
 from selenium import webdriver
-import os
 
-# Путь к geckodriver
-geckodriver_path = "/data/data/com.termux/files/usr/bin/geckodriver"
+# Путь до ChromeDriver
+chrome_driver_path = '/data/data/com.termux/files/usr/bin/chromedriver'
 
-# Путь к исполняемому файлу Firefox
-firefox_binary_path = "/data/data/com.termux/files/home/firefox/firefox-bin"
+# Создание объекта WebDriver
+driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
-# Добавляем путь к geckodriver в переменную окружения PATH
-os.environ["PATH"] += os.pathsep + os.path.dirname(geckodriver_path)
-print("Path")
+# Пример использования - открываем Google
+driver.get('https://www.google.com')
 
-# Создание экземпляра драйвера
-options = webdriver.FirefoxOptions()
-options.binary_location = firefox_binary_path  # Указываем путь к исполняемому файлу Firefox
-driver = webdriver.Firefox(options=options)
-print("Driver") 
-
-# Пример использования: открываем сайт Google
-driver.get("https://www.google.com")
-print("Get")
-
-# Закрываем драйвер после использования
+# Закрываем браузер
 driver.quit()
