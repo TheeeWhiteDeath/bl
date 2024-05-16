@@ -5,7 +5,7 @@ import os
 geckodriver_path = "/data/data/com.termux/files/usr/bin/geckodriver"
 
 # Путь к исполняемому файлу Firefox
-firefox_binary_path = "/data/data/com.termux/files/home/firefox/firefox.exe"
+firefox_binary_path = "/data/data/com.termux/files/home/firefox/firefox"
 
 # Добавляем путь к geckodriver в переменную окружения PATH
 os.environ["PATH"] += os.pathsep + os.path.dirname(geckodriver_path)
