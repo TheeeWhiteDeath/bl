@@ -14,7 +14,9 @@ def register_with_proxy():
     options = Options()
 
     # Устанавливаем User-Agent заголовок
-    options.add_argument("user-agent=Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--headless")
 
     # Устанавливаем язык и регион
     options.add_argument("--lang=en-GB")  # Язык: английский, Регион: Великобритания
