@@ -173,7 +173,7 @@ def register_with_proxy():
 
 
 
-    time.sleep(5)
+    time.sleep(10)
     current_directory = os.path.dirname(os.path.abspath(__file__))
     screenshot_file = os.path.join(current_directory, "screenshot.png")
     driver.save_screenshot(screenshot_file)
