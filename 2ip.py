@@ -37,6 +37,7 @@ def register_with_proxy():
 
     driver.get("https://2ip.io/")
     time.sleep(5)
+    driver.execute_script("document.body.style.zoom='0.5'")
 
     current_directory = os.path.dirname(os.path.abspath(__file__))
     screenshot_file = os.path.join(current_directory, "screenshot.png")
