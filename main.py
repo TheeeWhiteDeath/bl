@@ -121,7 +121,7 @@ def register_with_proxy():
 
 
     use_field = driver.find_element(By.ID, 'reg-username')
-    text_to_enter = "Richardson2629"
+    text_to_enter = "RichardsME89QF"
     use_field.send_keys(text_to_enter)
     print('Text entered into reg-username')
 
