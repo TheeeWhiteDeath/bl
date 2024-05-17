@@ -49,25 +49,25 @@ def register_with_proxy():
     driver.switch_to.frame("cp-registration-frame")
 
     first_name_field = driver.find_element(By.ID, 'reg-firstName')
-    text_to_enter = "Abdullah"  
+    text_to_enter = "John"  
     first_name_field.send_keys(text_to_enter)
     print('Text entered firstname')
     time.sleep(1)
 
     last_name_field = driver.find_element(By.ID, 'reg-lastName')
-    text_to_enter = "Jama" 
+    text_to_enter = "Rodgers" 
     last_name_field.send_keys(text_to_enter)
     print('Text entered last name')
     time.sleep(1)
 
     day_field = driver.find_element(By.ID, 'reg-dobDay')
-    text_to_enter = "06" 
+    text_to_enter = "17" 
     day_field.send_keys(text_to_enter)
     print('Text entered day')
     time.sleep(1)
 
     dob_month_field = driver.find_element(By.NAME, 'dobMonth')
-    value_to_enter = "05" 
+    value_to_enter = "02" 
     dob_month_field.send_keys(value_to_enter)
     print('Text entered dobMonth')
     time.sleep(1)
@@ -79,19 +79,19 @@ def register_with_proxy():
     time.sleep(1)
 
     email_field = driver.find_element(By.ID, 'reg-email')
-    text_to_enter = "c.p.walters30@gmail.com" 
+    text_to_enter = "artemkudelya2010@gmail.com" 
     email_field.send_keys(text_to_enter)
     print('Text entered into reg-email')
     time.sleep(2)
 
     mobile_field = driver.find_element(By.ID, 'reg-mobile')
-    text_to_enter = "+44 (749) 837-1353"  
+    text_to_enter = "+44 (749) 780-5598"  
     mobile_field.send_keys(text_to_enter)
     print('Text entered into reg-mobile')
     time.sleep(2)
 
     search_field = driver.find_element(By.ID, 'reg-search')
-    text_to_enter = "92 St Pancras Way"
+    text_to_enter = "19 Milner Road"
     search_field.send_keys(text_to_enter)
     print('Text entered into reg-search')
 
@@ -121,7 +121,7 @@ def register_with_proxy():
 
 
     use_field = driver.find_element(By.ID, 'reg-username')
-    text_to_enter = "Omer85043"
+    text_to_enter = "Minthull7215"
     use_field.send_keys(text_to_enter)
     print('Text entered into reg-username')
 
@@ -129,7 +129,7 @@ def register_with_proxy():
 
 
     pss_field = driver.find_element(By.ID, 'reg-password')
-    text_to_enter = "@@nL#2j50C"
+    text_to_enter = "Gj2hb7@@J"
     pss_field.send_keys(text_to_enter)
     print('Text entered into reg-password')
 
@@ -160,7 +160,7 @@ def register_with_proxy():
     select_element = Select(driver.find_element(By.ID, "reg-depositLimit"))
 
 # Выбираем опцию "£500" по значению
-    select_element.select_by_value("500")
+    select_element.select_by_value("125")
     time.sleep(5)
     button = driver.find_element(By.ID, "reg-submit")
 
