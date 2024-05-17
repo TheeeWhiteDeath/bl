@@ -160,7 +160,7 @@ def register_with_proxy():
     select_element = Select(driver.find_element(By.ID, "reg-depositLimit"))
 
 # Выбираем опцию "£500" по значению
-    select_element.select_by_value("125")
+    select_element.select_by_value("500")
     time.sleep(5)
     button = driver.find_element(By.ID, "reg-submit")
 
